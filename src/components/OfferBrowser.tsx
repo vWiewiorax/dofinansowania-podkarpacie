@@ -58,7 +58,7 @@ export default function OfferBrowser({ data }: { data: OffersResult }) {
   const [category, setCategory] = useState<CategoryId | null>(null);
   const [onlyFree, setOnlyFree] = useState(false);
   const [showEnded, setShowEnded] = useState(false);
-  const [sort, setSort] = useState<Sort>("newest");
+  const [sort, setSort] = useState<Sort>("deadline");
   const [limit, setLimit] = useState(PAGE_SIZE);
 
   const { today, staleBefore } = useMemo(() => {
@@ -113,13 +113,17 @@ export default function OfferBrowser({ data }: { data: OffersResult }) {
     const programs = list.filter((o) => o.permanent);
     const items = list.filter((o) => !o.permanent);
     if (sort === "deadline") {
-      items.sort((a, b) => {
-        const ae = a.endDate && a.endDate >= today ? a.endDate : "9999";
-        const be = b.endDate && b.endDate >= today ? b.endDate : "9999";
-        return ae.localeCompare(be) || sortKey(b).localeCompare(sortKey(a));
-      });
+      const upcoming = (o: Offer) => {
+        const d = o.type === "kurs" ? o.startDate : (o.endDate ?? o.startDate);
+        return d && d >= today ? d : "9999";
+      };
+      items.sort((a, b) => upcoming(a).localeCompare(upcoming(b)) || sortKey(b).localeCompare(sortKey(a)));
     } else {
-      items.sort((a, b) => sortKey(b).localeCompare(sortKey(a)));
+      items.sort(
+        (a, b) =>
+          (b.publishedAt ?? "").localeCompare(a.publishedAt ?? "") ||
+          (a.startDate ?? "9999").localeCompare(b.startDate ?? "9999"),
+      );
     }
     return { programs, items };
   }, [base, type, category, sort, today]);
@@ -245,8 +249,8 @@ export default function OfferBrowser({ data }: { data: OffersResult }) {
               onChange={(e) => setSort(e.target.value as Sort)}
               className="rounded-lg border border-slate-200 bg-white px-2 py-1"
             >
-              <option value="newest">najnowsze</option>
               <option value="deadline">najbliższy termin</option>
+              <option value="newest">najnowsze ogłoszenia</option>
             </select>
           </label>
         </div>

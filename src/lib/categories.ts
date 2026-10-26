@@ -85,7 +85,7 @@ export const CATEGORIES: CategoryDef[] = [
     id: "spoleczne",
     label: "Pomoc społeczna i integracja",
     description: "Rodziny, seniorzy, osoby z niepełnosprawnościami",
-    keywords: ["spoleczn", "integrac", "niepelnospraw", "wykluczen", "rodzin", "senior", "osob starszych", "cudzoziem", "ukrain", "pfron", "pozarzadow", "ekonomii spolecznej", "rownosci", "rownosciow"],
+    keywords: ["spoleczn", "integracji spolecz", "integracja spolecz", "integracji zawod", "niepelnospraw", "wykluczen", "rodzin", "senior", "osob starszych", "cudzoziem", "ukrain", "pfron", "pozarzadow", "ekonomii spolecznej", "rownosci", "rownosciow"],
   },
   {
     id: "ekologia",

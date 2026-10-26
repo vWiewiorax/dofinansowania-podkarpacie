@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dofinansowania i darmowe kursy na Podkarpaciu
 
-## Getting Started
+Aplikacja Next.js, która zbiera w jednym miejscu dofinansowania, dotacje, kursy z dofinansowaniem i bezpłatne szkolenia w województwie podkarpackim i dzieli je na kategorie.
 
-First, run the development server:
+## Źródła danych
 
-```bash
+Dane są pobierane automatycznie z oficjalnych serwisów i odświeżane co godzinę:
+
+- Fundusze Europejskie dla Podkarpacia - nabory wniosków oraz szkolenia i spotkania informacyjne
+- Wojewódzki Urząd Pracy w Rzeszowie i 21 powiatowych urzędów pracy - aktualności o dotacjach, KFS, stażach i szkoleniach
+- Baza Usług Rozwojowych (PARP) - usługi z możliwością dofinansowania w woj. podkarpackim
+- Stałe programy: PUP, KFS, Akademia PARP, WFOŚiGW w Rzeszowie
+
+## Uruchomienie lokalne (Windows, PowerShell)
+
+Wymagany Node.js 20 lub nowszy.
+
+```powershell
+git clone https://github.com/vWiewiorax/dofinansowania-podkarpacie.git
+cd dofinansowania-podkarpacie
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Potem otwórz http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Wdrożenie
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Projekt działa na Vercel bez dodatkowej konfiguracji i zmiennych środowiskowych.
